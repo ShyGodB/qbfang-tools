@@ -4,7 +4,7 @@ const pool = mysql.createPool({
     host: 'localhost',
     user: 'root',
     password: '1234qwer',
-    database: 'blog'
+    database: 'Tools'
 });
 
 const promisePool = pool.promise();

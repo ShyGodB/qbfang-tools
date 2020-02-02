@@ -26,7 +26,6 @@ const timeDouble = {
     }]
 }
 
-
 export default {
     timeDouble
 }
