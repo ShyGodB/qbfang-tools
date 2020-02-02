@@ -1,0 +1,28 @@
+#mainnav .f-left {
+    float: left;
+}
+
+#mainnav .f-right {
+    float: right;
+}
+a {
+    color: #000000;
+    text-decoration: none;
+}
+.router-link-active {
+    text-decoration: none;
+}
+.line {
+    display: inline-block;
+}
+.text-none {
+    text-decoration: none;
+}
+
+.hover-hand {
+    cursor: pointer;
+}
+
+.oa {
+    overflow: auto;
+}
