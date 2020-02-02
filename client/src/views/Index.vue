@@ -11,17 +11,18 @@
                         <el-tab-pane label="妖灵">
                             <el-form ref="form" :model="form" label-width="80px">
                                 <el-form-item label="名称">
-                                    <el-input v-model="form.name" class="w-50"></el-input>
+                                    <el-input v-model="form.name" class="w-50" @keyup.enter.native="addDemon()">
+                                    </el-input>
                                 </el-form-item>
                                 <el-form-item label="稀有度">
-                                    <el-radio-group v-model="form.level">
-                                        <el-radio label="ssr"></el-radio>
-                                        <el-radio label="sr"></el-radio>
-                                        <el-radio label="r"></el-radio>
-                                    </el-radio-group>
+                                    <el-select v-model="form.level">
+                                        <el-option label="ssr" value="1"></el-option>
+                                        <el-option label="sr" value="2"></el-option>
+                                        <el-option label="r" value="3"></el-option>
+                                    </el-select>
                                 </el-form-item>
                                 <el-form-item label="属性">
-                                    <el-select v-model="form.elements">
+                                    <el-select v-model="form.nature">
                                         <el-option label="金" value="金"></el-option>
                                         <el-option label="木" value="木"></el-option>
                                         <el-option label="水" value="水"></el-option>
@@ -33,7 +34,7 @@
                                     </el-select>
                                 </el-form-item>
                                 <el-form-item>
-                                    <el-button type="primary" @click="onSubmit">添加</el-button>
+                                    <el-button type="primary" @click="addDemon">添加</el-button>
                                     <el-button>取消</el-button>
                                 </el-form-item>
                             </el-form>
@@ -52,7 +53,7 @@
                                     </el-radio-group>
                                 </el-form-item>
                                 <el-form-item label="属性">
-                                    <el-select v-model="goods.elements">
+                                    <el-select v-model="goods.nature">
                                         <el-option label="金" value="金"></el-option>
                                         <el-option label="木" value="木"></el-option>
                                         <el-option label="水" value="水"></el-option>
@@ -64,7 +65,7 @@
                                     </el-select>
                                 </el-form-item>
                                 <el-form-item>
-                                    <el-button type="primary" @click="onSubmit">添加</el-button>
+                                    <el-button type="primary" @click="addDemon">添加</el-button>
                                     <el-button>取消</el-button>
                                 </el-form-item>
                             </el-form>
@@ -91,19 +92,20 @@ export default {
             form: {
                 name: '',
                 level: '',
-                elements: ''
+                nature: ''
             },
             goods: {
                 name: '',
                 level: '',
-                elements: ''
+                nature: ''
             }
         }
     },
     methods: {
-        onSubmit () {
-            if (!this.form.name || !this.form.level || !this.form.elements) this.$message.error('请输入完整信息！')
-            console.log(this.form)
+        async addDemon () {
+            if (!this.form.name || !this.form.level || !this.form.nature) this.$message.error('请输入完整信息！')
+            await this.$api.post('/demon/add', this.form)
+            this.$message.success('添加成功！')
         }
     },
     created () {
