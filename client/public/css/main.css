@@ -18,11 +18,3 @@ a {
 .text-none {
     text-decoration: none;
 }
-
-.hover-hand {
-    cursor: pointer;
-}
-
-.oa {
-    overflow: auto;
-}

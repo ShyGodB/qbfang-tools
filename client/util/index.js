@@ -1,6 +1,7 @@
-import config from './config'
-import tool from './tool'
+import check from './check'
+import api from './api'
 
 export default {
-    config, tool
+    ...check,
+    api: api
 }

@@ -4,19 +4,21 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const state = {
-    orderId: '',
-    userinfo: false
-}
+    fileId: '',
+    fileType: '',
+    parentFileId: '',
+    parentFileType: 'Desktop'
+};
 
-const getters = {}
+const getters = {};
 
-const mutations = {}
+const mutations = {};
 
-const actions = {}
+const actions = {};
 
 export default new Vuex.Store({
     state,
     getters,
     mutations,
     actions
-})
+});
